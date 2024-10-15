@@ -12,3 +12,4 @@ In these series of challenges, the vulnerable code will be presented in src/{cha
 
 1. [ABI Smuggling](./test/abi-smuggling/) -> Solved ✅
 2. [Side Entrace](./test/side-entrace) -> Solved ✅
+3. [Free Rider](./test/free-rider) -> Solved ✅

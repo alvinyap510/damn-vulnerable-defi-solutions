@@ -117,6 +117,5 @@ contract AttackContract {
         receiver.transfer(address(this).balance);
     }
 
-    receive() external payable {
-    }
+    receive() external payable {}
 }
