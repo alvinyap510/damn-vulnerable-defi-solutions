@@ -91,9 +91,7 @@ contract UnstoppableChallenge is Test {
     /**
      * CODE YOUR SOLUTION HERE
      */
-    function test_unstoppable() public checkSolvedByPlayer {
-        
-    }
+    function test_unstoppable() public checkSolvedByPlayer {}
 
     /**
      * CHECKS SUCCESS CONDITIONS - DO NOT TOUCH
