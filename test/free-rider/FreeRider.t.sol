@@ -161,7 +161,10 @@ contract FreeRiderChallenge is Test {
         rescueContract.flashRescue();
 
         console.log("Balance of market place:", address(marketplace).balance);
-        require(address(marketplace).balance == 0, "FreeRiderSolution: Optimize code to drain all of the funds in marketplace");
+        require(
+            address(marketplace).balance == 0,
+            "FreeRiderSolution: Optimize code to drain all of the funds in marketplace"
+        );
     }
 
     /**
