@@ -14,3 +14,4 @@ In these series of challenges, the vulnerable code will be presented in src/{cha
 2. [Side Entrace](./test/side-entrace) -> Solved ✅
 3. [Free Rider](./test/free-rider) -> Solved ✅
 4. [Puppet](./test/puppet) -> Solved ✅ (The test design is flawed as how Foundry's vm increases nonce is different than real life)
+5. [Puppet V2](./test/puppet-v2) -> Solved ✅
