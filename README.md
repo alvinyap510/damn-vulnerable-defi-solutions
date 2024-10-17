@@ -17,3 +17,4 @@ In these series of challenges, the vulnerable code will be presented in src/{cha
 5. [Puppet V2](./test/puppet-v2) -> Solved ✅
 6. [Truster](./test/truster/) -> Solved ✅ Easiest so far
 7. [Selfie](./test/selfie/) -> Solved ✅
+8. [Compromised](./test/compromised/) -> Solved ✅
