@@ -24,7 +24,6 @@ contract SimpleGovernance is ISimpleGovernance {
         if (!_hasEnoughVotes(msg.sender)) {
             revert NotEnoughVotes(msg.sender);
         }
-
         if (target == address(this)) {
             revert InvalidTarget();
         }
