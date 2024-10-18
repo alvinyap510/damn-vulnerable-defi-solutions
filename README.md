@@ -18,3 +18,4 @@ In these series of challenges, the vulnerable code will be presented in src/{cha
 6. [Truster](./test/truster/) -> Solved ✅ Easiest so far
 7. [Selfie](./test/selfie/) -> Solved ✅
 8. [Compromised](./test/compromised/) -> Solved ✅
+9. [Backdoor](./test/backdoor/) -> Solved ✅ => Indeed something new, forced to look into ProxyWallet's inplementation code
