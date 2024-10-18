@@ -19,3 +19,4 @@ In these series of challenges, the vulnerable code will be presented in src/{cha
 7. [Selfie](./test/selfie/) -> Solved ✅
 8. [Compromised](./test/compromised/) -> Solved ✅
 9. [Backdoor](./test/backdoor/) -> Solved ✅ => Indeed something new, forced to look into ProxyWallet's inplementation code
+10. [Unstoppable](./test/unstoppable/) -> Solved ✅ => The most LOL, upon seeing this ```if (convertToShares(totalSupply) != balanceBefore) revert InvalidBalance();``` transferred 10 tokens the the vault and it halts 
