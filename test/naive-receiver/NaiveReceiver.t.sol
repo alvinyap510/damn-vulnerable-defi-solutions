@@ -8,7 +8,6 @@ import {FlashLoanReceiver} from "../../src/naive-receiver/FlashLoanReceiver.sol"
 import {BasicForwarder} from "../../src/naive-receiver/BasicForwarder.sol";
 // import {ECDSA} from "solady/utils/ECDSA.sol";
 
-
 contract NaiveReceiverChallenge is Test {
     address deployer = makeAddr("deployer");
     address recovery = makeAddr("recovery");

@@ -20,4 +20,5 @@ In these series of challenges, the vulnerable code will be presented in src/{cha
 8. [Compromised](./test/compromised/) -> Solved ✅ => Not so much of a code bug but rather a leak
 9. [Backdoor](./test/backdoor/) -> Solved ✅ => Indeed something new, forced to look into ProxyWallet's inplementation code
 10. [Unstoppable](./test/unstoppable/) -> Solved ✅ => The most LOL, upon seeing this ```if (convertToShares(totalSupply) != balanceBefore) revert InvalidBalance();``` transferred 10 tokens to the vault and it halts. Learned about ERC4626, good thing.
-11. [Naive Receiver](./test/naive-receiver/) -> Learned more details about meta-transactions, relayers ERC2771, and multicall
+11. [Naive Receiver](./test/naive-receiver/) Solved ✅ -> Learned more details about meta-transactions, relayers ERC2771, and multicall
+12. [The Rewarder](./test/the-rewarder/) Solved ✅ -> Learned more about merkle root and openzeppelin's library to generate and verify proofs. I hate reading bitmaps BTW
